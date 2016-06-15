@@ -1,0 +1,54 @@
+body{
+    margin: auto;
+    text-align: center;
+}
+
+
+.flood-it{
+  position: relative;
+}
+
+.grid{
+  margin: auto;
+  border: 5px solid black;
+  width: 300px;
+  height: 300px;
+  padding: 0px;
+}
+
+.square{
+  float: left;
+  list-style: none;
+  height: 10px;
+  width: 10px;
+}
+
+.red{
+ background-color: red;
+}
+
+.yellow{
+  background-color: yellow;
+}
+
+.pink{
+  background-color: pink;
+}
+
+.green{
+  background-color: green;
+}
+
+.blue{
+  background-color: blue;
+}
+
+.purple{
+  background-color: purple;
+}
+
+.group:after {
+  content: "";
+  display: block;
+  clear: both;
+}
