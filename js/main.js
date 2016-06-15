@@ -1,11 +1,10 @@
-var View = require('./flood-view');
+var Display = require('./flood-display');
 var Game = require('./game');
 
 $(function () {
   var size = 14;
   var game = new Game(size);
-  var view = new View(game, size);
+  var display = new Display(game, size);
 
-  view.setupBoard();
-  view.bindEvents();
+  display.setupBoard();
 });

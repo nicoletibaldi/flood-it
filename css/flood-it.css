@@ -1,8 +1,45 @@
+html, body, section, article, h1, h2, p, strong, em, a, button {
+  margin: 0;
+  border: 0;
+  padding: 0;
+  outline: 0;
+  box-sizing: inherit;
+  font: inherit;
+  text-decoration: inherit;
+  text-align: inherit;
+  color: inherit;
+  background: transparent;
+}
+
 body{
     margin: auto;
     text-align: center;
 }
 
+.logo{
+  margin: 15px;
+}
+
+.button-table{
+  height: 50px;
+  width: 450px;
+  margin: auto;
+}
+
+.button{
+  margin: 20px;
+  height: 30px;
+  width: 30px;
+  float: left;
+  border: 1px solid grey;
+  border-style: outset;
+  border-radius: 50%;
+}
+
+.button:hover{
+  cursor: pointer;
+  border-style: inset;
+}
 
 .flood-it{
   position: relative;
@@ -10,41 +47,40 @@ body{
 
 .grid{
   margin: auto;
-  border: 5px solid black;
-  width: 300px;
-  height: 300px;
+  width: 420px;
+  height: 420px;
   padding: 0px;
 }
 
 .square{
   float: left;
   list-style: none;
-  height: 10px;
-  width: 10px;
+  height: 30px;
+  width: 30px;
 }
 
 .red{
- background-color: red;
+ background-color: #d45a2e;
 }
 
 .yellow{
-  background-color: yellow;
+  background-color: #ecea2e;
 }
 
 .pink{
-  background-color: pink;
+  background-color: #e27fa9;
 }
 
 .green{
-  background-color: green;
+  background-color: #90a92f;
 }
 
 .blue{
-  background-color: blue;
+  background-color: #5ab0df;
 }
 
 .purple{
-  background-color: purple;
+  background-color: #6967af;
 }
 
 .group:after {
