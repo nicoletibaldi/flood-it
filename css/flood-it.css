@@ -34,7 +34,7 @@ body{
   border: 1px solid white;
   border-style: outset;
   border-radius: 50%;
-  background: radial-gradient(circle at 50% 0px, #d9d9d9, rgba(255, 255, 255, 0) 48%);
+  background: radial-gradient(circle at 50% 0px, #ffffff, rgba(255, 255, 255, 0) 58%);
 
 }
 
