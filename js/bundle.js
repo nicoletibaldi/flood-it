@@ -88,6 +88,16 @@
 	      }
 	      $ul.append($li);
 	  }
+	  this.floodNeighbors();
+	};
+	
+	Display.prototype.floodNeighbors = function () {
+	  var floodedPositions = [];
+	  $(".flooded").each(function(i) {
+	    var pos = $(this).data("pos");
+	    floodedPositions.push(pos[0]);
+	    console.log(floodedPositions)
+	  });
 	};
 	
 	Display.prototype.bindEvents = function () {
