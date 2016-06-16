@@ -65,20 +65,26 @@
 	  this.game = game;
 	  this.size = size;
 	  this.colors = ["red", "yellow", "pink", "green", "blue", "purple"];
+	  this.maxMoves = 25;
+	  this.moves = 0;
 	};
 	
 	Display.prototype.setupBoard = function () {
 	  var $fig = $("figure");
 	  var $ul = $("<ul></ul>").addClass("grid group");
+	  var $p = $("<p></p>").text("Moves: " + this.moves + "/" + this.maxMoves);
+	  var floodedColor;
+	  $fig.append($p);
 	  $fig.append($ul);
 	
 	  for (var i = 0; i < this.size * this.size; i++) {
-	      var rand = this.colors[Math.floor(Math.random() * this.colors.length)];
+	      var randColor = this.colors[Math.floor(Math.random() * this.colors.length)];
 	      var $li;
 	      if (i === 0) {
-	        $li = $("<li></li>").addClass("square flooded " + rand).data("pos", [i]);
+	        floodedColor = randColor;
+	        $li = $("<li></li>").addClass("square flooded " + randColor).data("pos", [i]);
 	      } else {
-	        $li = $("<li></li>").addClass("square " + rand).data("pos", [i]);
+	        $li = $("<li></li>").addClass("square " + randColor).data("pos", [i]);
 	      }
 	      $ul.append($li);
 	  }
@@ -93,6 +99,8 @@
 	};
 	
 	Display.prototype.makeMove = function (color) {
+	  this.moves++;
+	  $("p").empty().text("Moves: " + this.moves + "/" + this.maxMoves);
 	  $(".flooded").each(function(i) {
 	    $(this).removeClass("green blue yellow pink red purple");
 	    $(this).addClass(color);
