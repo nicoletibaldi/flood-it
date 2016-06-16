@@ -88,15 +88,27 @@
 	      }
 	      $ul.append($li);
 	  }
-	  this.floodNeighbors();
+	  this.floodNeighbors(floodedColor);
+	  console.log($(".flooded"))
 	};
 	
-	Display.prototype.floodNeighbors = function () {
+	Display.prototype.floodNeighbors = function (floodedColor) {
 	  var floodedPositions = [];
-	  $(".flooded").each(function(i) {
+	  $(".flooded").each(function(_) {
 	    var pos = $(this).data("pos");
 	    floodedPositions.push(pos[0]);
-	    console.log(floodedPositions)
+	  });
+	
+	  var neighbors = [];
+	  floodedPositions.forEach(function (pos){
+	    neighbors = neighbors.concat(adj_squares(pos));
+	  });
+	
+	  neighbors.forEach(function (n){
+	    var square = $(".square").filterByData("pos", n);
+	    if (square.is("." + floodedColor)){
+	      square.addClass("flooded");
+	    }
 	  });
 	};
 	
@@ -143,6 +155,11 @@
 	  return squares.sort();
 	}
 	
+	$.fn.filterByData = function(prop, val) {
+	    return this.filter(
+	        function() { return $(this).data(prop)==val; }
+	    );
+	};
 	
 	module.exports = Display;
 
