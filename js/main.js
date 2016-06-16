@@ -7,4 +7,5 @@ $(function () {
   var display = new Display(game, size);
 
   display.setupBoard();
+  display.bindEvents();
 });

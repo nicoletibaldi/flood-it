@@ -44,7 +44,7 @@
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var Display = __webpack_require__(5);
+	var Display = __webpack_require__(1);
 	var Game = __webpack_require__(2);
 	
 	$(function () {
@@ -53,11 +53,83 @@
 	  var display = new Display(game, size);
 	
 	  display.setupBoard();
+	  display.bindEvents();
 	});
 
 
 /***/ },
-/* 1 */,
+/* 1 */
+/***/ function(module, exports) {
+
+	var Display = function (game, size, $el) {
+	  this.game = game;
+	  this.size = size;
+	  this.colors = ["red", "yellow", "pink", "green", "blue", "purple"];
+	};
+	
+	Display.prototype.setupBoard = function () {
+	  var $fig = $("figure");
+	  var $ul = $("<ul></ul>").addClass("grid group");
+	  $fig.append($ul);
+	
+	  for (var i = 0; i < this.size * this.size; i++) {
+	      var rand = this.colors[Math.floor(Math.random() * this.colors.length)];
+	      var $li;
+	      if (i === 0) {
+	        $li = $("<li></li>").addClass("square flooded " + rand).data("pos", [i]);
+	      } else {
+	        $li = $("<li></li>").addClass("square " + rand).data("pos", [i]);
+	      }
+	      $ul.append($li);
+	  }
+	};
+	
+	Display.prototype.bindEvents = function () {
+	  var display = this;
+	  $(".button").on("click", function(e){
+	    var color = e.currentTarget.attributes[1].value;
+	    display.makeMove(color);
+	  });
+	};
+	
+	Display.prototype.makeMove = function (color) {
+	  $(".flooded").each(function(i) {
+	    $(this).removeClass("green blue yellow pink red purple");
+	    $(this).addClass(color);
+	  });
+	  //find flooded squares
+	  //(let's say color is blue)
+	  //find adjacent of flooded squares that are blue
+	    //make them flooded
+	    //check their neighbors
+	    //stop when none are blue
+	
+	    //$().append().text
+	    //$(".color")
+	};
+	
+	function adj_squares(pos) {
+	  var squares = [];
+	  if (pos > 14) {
+	    squares.push(pos - 14);
+	  }
+	  if (pos < 182) {
+	    squares.push(pos + 14);
+	  }
+	  if (pos % 14 !== 0) {
+	    squares.push(pos - 1);
+	  }
+	  if ((pos + 1) % 14 !== 0) {
+	    squares.push(pos + 1);
+	  }
+	  return squares.sort();
+	}
+	
+	
+	module.exports = Display;
+
+
+/***/ },
 /* 2 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -123,51 +195,6 @@
 	}
 	
 	module.exports = MoveError;
-
-
-/***/ },
-/* 5 */
-/***/ function(module, exports) {
-
-	var Display = function (game, size, $el) {
-	  this.game = game;
-	  this.size = size;
-	  this.colors = ["red", "yellow", "pink", "green", "blue", "purple"];
-	};
-	
-	Display.prototype.setupBoard = function () {
-	  var $fig = $("figure");
-	  var $ul = $("<ul></ul>").addClass("grid group");
-	  $fig.append($ul);
-	
-	  for (var k = 0; k < this.size; k++) {
-	    for (var j = 0; j < this.size; j++) {
-	      var rand = this.colors[Math.floor(Math.random() * this.colors.length)];
-	      var $li = $("<li></li>").addClass("square " + rand).data("pos", [k,j]);
-	      $ul.append($li);
-	    }
-	  }
-	};
-	
-	Display.prototype.bindEvents = function () {
-	  var display = this;
-	  $(".button").on("click", function(e){
-	    var $button = $(e.currentTarget);
-	    //makeMove
-	  });
-	};
-	
-	Display.prototype.makeMove = function ($color) {
-	  //change color class of prev squares to new color
-	  //check if game is over (moves or won)
-	    //if won congratulate
-	    //if lost give option to start over
-	    //$().append().text
-	    //$(".color")
-	};
-	
-	
-	module.exports = Display;
 
 
 /***/ }
