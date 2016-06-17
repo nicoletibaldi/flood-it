@@ -82,34 +82,19 @@
 	      var $li;
 	      if (i === 0) {
 	        floodedColor = randColor;
-	        $li = $("<li></li>").addClass("square flooded " + randColor).data("pos", [i]);
+	        $li = $("<li></li>").addClass("square " + randColor + " flooded").data("pos", [i]).text(i);
 	      } else {
-	        $li = $("<li></li>").addClass("square " + randColor).data("pos", [i]);
+	        $li = $("<li></li>").addClass("square " + randColor).data("pos", [i]).text(i);
 	      }
 	      $ul.append($li);
 	  }
 	  this.floodNeighbors(floodedColor);
-	  console.log($(".flooded"))
+	  // console.log($(".flooded"));
 	};
 	
 	Display.prototype.floodNeighbors = function (floodedColor) {
-	  var floodedPositions = [];
-	  $(".flooded").each(function(_) {
-	    var pos = $(this).data("pos");
-	    floodedPositions.push(pos[0]);
-	  });
 	
-	  var neighbors = [];
-	  floodedPositions.forEach(function (pos){
-	    neighbors = neighbors.concat(adj_squares(pos));
-	  });
-	
-	  neighbors.forEach(function (n){
-	    var square = $(".square").filterByData("pos", n);
-	    if (square.is("." + floodedColor)){
-	      square.addClass("flooded");
-	    }
-	  });
+	  flood(floodedColor);
 	};
 	
 	Display.prototype.bindEvents = function () {
@@ -138,9 +123,46 @@
 	    //$(".color")
 	};
 	
-	function adj_squares(pos) {
+	function doesFlood(neighbors, floodedColor) {
+	  var moved = false;
+	    neighbors.forEach(function (n){
+	      var square = $(".square").filterByData("pos", n);
+	      if (square.is("." + floodedColor) && !square.is(".flooded")){
+	        moved = true;
+	      }
+	    });
+	  return moved;
+	}
+	
+	function flood(floodedColor) {
+	  console.log("here");
+	  var floodedPositions = $(".flooded");
+	  var neighbors = findNeighbors(floodedPositions);
+	  if (doesFlood(neighbors, floodedColor) === false) {
+	    return;
+	  }
+	    neighbors.forEach(function (n){
+	      var square = $(".square").filterByData("pos", n);
+	      if (square.is("." + floodedColor) && !square.is(".flooded")){
+	        square.addClass("flooded");
+	      }
+	    });
+	
+	    flood(floodedColor);
+	}
+	
+	
+	function findNeighbors(floodedPositions){
+	  var neighbors = [];
+	  floodedPositions.each(function (pos){
+	    neighbors = neighbors.concat(adjSquares(pos));
+	  });
+	  return neighbors;
+	}
+	
+	function adjSquares(pos) {
 	  var squares = [];
-	  if (pos > 14) {
+	  if (pos >= 14) {
 	    squares.push(pos - 14);
 	  }
 	  if (pos < 182) {
