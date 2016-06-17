@@ -63,31 +63,33 @@ body{
 
 .red{
  background-color: #d45a2e;
+ color: #d45a2e;
 }
 
 .yellow{
   background-color: #ecea2e;
-
+  color: #ecea2e;
 }
 
 .pink{
   background-color: #e27fa9;
-
+  color: #e27fa9;
 }
 
 .green{
   background-color: #90a92f;
+  color: #90a92f;
 
 }
 
 .blue{
   background-color: #5ab0df;
-
+  color: #5ab0df;
 }
 
 .purple{
   background-color: #6967af;
-
+  color: #6967af;
 }
 
 .group:after {
@@ -97,5 +99,4 @@ body{
 }
 
 .flooded{
-  color:white;
 }
