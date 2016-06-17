@@ -20,8 +20,8 @@ Display.prototype.setupBoard = function () {
       if (i === 0) {
         floodedColor = randColor;
         $li = $("<li></li>").addClass("square " + randColor + " flooded").data("pos", [i]).text(i);
-      } else if (i === 14 || i === 28 || i === 29 || i === 42 || i ===43 ) {
-        $li = $("<li></li>").addClass("square " + floodedColor + " flooded").data("pos", [i]).text(i);
+      // } else if (i === 14 || i === 28 || i === 29 || i === 42 || i ===43 ) {
+      //   $li = $("<li></li>").addClass("square " + floodedColor + " flooded").data("pos", [i]).text(i);
 
       } else {
         $li = $("<li></li>").addClass("square " + randColor).data("pos", [i]).text(i);
@@ -75,7 +75,6 @@ function doesFlood(neighbors, floodedColor) {
 }
 
 function flood(floodedColor) {
-  console.log("here");
   var floodedPositions = $(".flooded");
   var neighbors = findNeighbors(floodedPositions);
   if (doesFlood(neighbors, floodedColor) === false) {
@@ -94,16 +93,11 @@ function flood(floodedColor) {
 
 function findNeighbors(floodedPositions){
   var neighbors = [];
-  floodedPositions.each(function (pos){
-    console.log("position")
-    console.log(pos)
-    console.log("neighbors")
-    console.log(adjSquares(pos))
+  floodedPositions.each(function (idx, el){
+
+    var pos = parseInt($(el).text());
     neighbors = neighbors.concat(adjSquares(pos));
   });
-
-  console.log("all")
-  console.log(neighbors)
   return neighbors;
 }
 
