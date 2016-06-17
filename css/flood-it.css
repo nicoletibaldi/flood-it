@@ -67,26 +67,35 @@ body{
 
 .yellow{
   background-color: #ecea2e;
+
 }
 
 .pink{
   background-color: #e27fa9;
+
 }
 
 .green{
   background-color: #90a92f;
+
 }
 
 .blue{
   background-color: #5ab0df;
+
 }
 
 .purple{
   background-color: #6967af;
+
 }
 
 .group:after {
   content: "";
   display: block;
   clear: both;
+}
+
+.flooded{
+  color:white;
 }

@@ -20,13 +20,15 @@ Display.prototype.setupBoard = function () {
       if (i === 0) {
         floodedColor = randColor;
         $li = $("<li></li>").addClass("square " + randColor + " flooded").data("pos", [i]).text(i);
+      } else if (i === 14 || i === 28 || i === 29 || i === 42 || i ===43 ) {
+        $li = $("<li></li>").addClass("square " + floodedColor + " flooded").data("pos", [i]).text(i);
+
       } else {
         $li = $("<li></li>").addClass("square " + randColor).data("pos", [i]).text(i);
       }
       $ul.append($li);
   }
   this.floodNeighbors(floodedColor);
-  // console.log($(".flooded"));
 };
 
 Display.prototype.floodNeighbors = function (floodedColor) {
@@ -49,6 +51,7 @@ Display.prototype.makeMove = function (color) {
     $(this).removeClass("green blue yellow pink red purple");
     $(this).addClass(color);
   });
+  flood(color);
   //find flooded squares
   //(let's say color is blue)
   //find adjacent of flooded squares that are blue
@@ -92,14 +95,21 @@ function flood(floodedColor) {
 function findNeighbors(floodedPositions){
   var neighbors = [];
   floodedPositions.each(function (pos){
+    console.log("position")
+    console.log(pos)
+    console.log("neighbors")
+    console.log(adjSquares(pos))
     neighbors = neighbors.concat(adjSquares(pos));
   });
+
+  console.log("all")
+  console.log(neighbors)
   return neighbors;
 }
 
 function adjSquares(pos) {
   var squares = [];
-  if (pos >= 14) {
+  if (pos > 13) {
     squares.push(pos - 14);
   }
   if (pos < 182) {
@@ -111,7 +121,7 @@ function adjSquares(pos) {
   if ((pos + 1) % 14 !== 0) {
     squares.push(pos + 1);
   }
-  return squares.sort();
+  return squares;
 }
 
 $.fn.filterByData = function(prop, val) {
