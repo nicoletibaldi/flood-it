@@ -8,4 +8,5 @@ $(function () {
 
   display.setupBoard();
   display.bindEvents();
+  game.registerStart();
 });

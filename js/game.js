@@ -5,4 +5,11 @@ function Game (size) {
   this.board = new Board(size);
 }
 
+Game.prototype.registerStart = function () {
+  $(".start-button").on("click", function (e){
+    $(".instructions").addClass("hidden");
+    $(".modal").addClass("hidden");
+  });
+};
+
 module.exports = Game;
