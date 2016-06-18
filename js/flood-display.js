@@ -20,9 +20,6 @@ Display.prototype.setupBoard = function () {
       if (i === 0) {
         floodedColor = randColor;
         $li = $("<li></li>").addClass("square " + randColor + " flooded").data("pos", [i]).text(i);
-      // } else if (i === 14 || i === 28 || i === 29 || i === 42 || i ===43 ) {
-      //   $li = $("<li></li>").addClass("square " + floodedColor + " flooded").data("pos", [i]).text(i);
-
       } else {
         $li = $("<li></li>").addClass("square " + randColor).data("pos", [i]).text(i);
       }
@@ -52,6 +49,9 @@ Display.prototype.makeMove = function (color) {
     $(this).addClass(color);
   });
   flood(color);
+  if (this.moves === 25) {
+    alert("Game over!");
+  }
   //find flooded squares
   //(let's say color is blue)
   //find adjacent of flooded squares that are blue
@@ -61,6 +61,10 @@ Display.prototype.makeMove = function (color) {
 
     //$().append().text
     //$(".color")
+};
+
+Display.prototype.checkIfWon = function () {
+
 };
 
 function doesFlood(neighbors, floodedColor) {

@@ -59,6 +59,10 @@ body{
   list-style: none;
   height: 30px;
   width: 30px;
+  -webkit-transition: all 1.5s ease;
+  -moz-transition: all 1.5s ease;
+  -o-transition: all 1.5s ease;
+  transition: all 1.5s ease;
 }
 
 .red{
@@ -99,4 +103,5 @@ body{
 }
 
 .flooded{
+  /*background: white;*/
 }
