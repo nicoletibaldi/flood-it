@@ -11,17 +11,20 @@ html, body, section, article, h1, h2, p, strong, em, a, button {
   background: transparent;
 }
 
-body{
+html {
+}
+
+body {
     margin: auto;
     text-align: center;
 }
 
-p{
+p {
   color: white;
   font-family: arial;
 }
 
-.flood-header{
+.flood-header {
   color: #f54382;
   font-style: bold;
   font-family: arial black;
@@ -30,21 +33,42 @@ p{
   padding: 15px;
 }
 
-.desc{
+.desc {
   font-weight: 300;
   padding: 10px;
   font-size: 16px;
 }
 
-.start-button{
+.det {
+  padding: 15px;
+}
+
+.start-button {
   cursor: pointer;
+  background: #f54382;
+  font-family: arial black;
+  width: 85px;
+  height: 32px;
+  margin: 0 auto;
+  text-align: center;
+  vertical-align: center;
+  border-radius: 5px;
+  padding-top: 5px;
+}
+
+.nicole {
+  margin: 0 auto;
+  font-family: arial;
+  color: white;
+  padding: 25px;
 }
 
 .instructions, .over {
     text-align: center;
     max-width:700px;
-    width:30%;
-    height: 70%;
+    min-width: 200px;
+    width: 30%;
+    height: 500px;;
     padding:40px;
     position:absolute;
     top:50%;
@@ -53,9 +77,10 @@ p{
     transform:translate(-50%, -50%);
     box-shadow:0px 2px 6px rgba(0,0,0,1);
     border-radius:5px;
-    background: black;
+    background: #212121;
     color: white;
     z-index: 100;
+    border: 1px solid #2c2c2c;
 }
 
 .modal {
@@ -68,51 +93,59 @@ p{
   z-index: 99;
 }
 
-.hidden{
+.blur {
+  -webkit-filter: blur(20px);
+  -moz-filter: blur(15px);
+  -o-filter: blur(15px);
+  -ms-filter: blur(15px);
+  filter: blur(15px);
+}
+
+.hidden {
   display: none;
 }
 
 /*game board*/
 
-.logo{
-  margin: 15px;
+.logo {
+  margin: 0 auto;
 }
 
-.button-table{
+.button-table {
   height: 50px;
   width: 450px;
   margin: auto;
 }
 
-.button{
+.button {
   margin: 20px;
   height: 30px;
   width: 30px;
   float: left;
   border: 1px solid white;
-  border-style: outset;
+  /*border-style: outset;*/
   border-radius: 50%;
-  background: radial-gradient(circle at 50% 0px, #ffffff, rgba(255, 255, 255, 0) 58%);
+  /*background: radial-gradient(circle at 50% 0px, #ffffff, rgba(255, 255, 255, 0) 58%);*/
 
 }
 
-.button:hover{
+.button:hover {
   cursor: pointer;
   border-style: inset;
 }
 
-.flood-it{
+.flood-it {
   position: relative;
 }
 
-.grid{
+.grid {
   margin: auto;
   width: 420px;
   height: 420px;
   padding: 0px;
 }
 
-.square{
+.square {
   float: left;
   list-style: none;
   height: 30px;
@@ -124,33 +157,33 @@ p{
 
 }
 
-.red{
+.red {
  background-color: #d45a2e;
  color: #d45a2e;
 }
 
-.yellow{
+.yellow {
   background-color: #ecea2e;
   color: #ecea2e;
 }
 
-.pink{
+.pink {
   background-color: #e27fa9;
   color: #e27fa9;
 }
 
-.green{
+.green {
   background-color: #90a92f;
   color: #90a92f;
 
 }
 
-.blue{
+.blue {
   background-color: #5ab0df;
   color: #5ab0df;
 }
 
-.purple{
+.purple {
   background-color: #6967af;
   color: #6967af;
 }
@@ -161,6 +194,6 @@ p{
   clear: both;
 }
 
-.flooded{
+.flooded {
   /*background: white;*/
 }

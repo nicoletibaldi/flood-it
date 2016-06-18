@@ -9,9 +9,9 @@ var Display = function (game, size, $el) {
 Display.prototype.setupBoard = function () {
   var $fig = $("figure");
   var $ul = $("<ul></ul>").addClass("grid group");
-  var $p = $("<p></p>").text("Moves: " + this.moves + "/" + this.maxMoves);
+  var $h3 = $("<h3></h3>").text("Moves: " + this.moves + "/" + this.maxMoves);
   var floodedColor;
-  $fig.append($p);
+  $fig.append($h3);
   $fig.append($ul);
 
   for (var i = 0; i < this.size * this.size; i++) {
@@ -43,28 +43,45 @@ Display.prototype.bindEvents = function () {
 
 Display.prototype.makeMove = function (color) {
   this.moves++;
-  $("p").empty().text("Moves: " + this.moves + "/" + this.maxMoves);
+  $("h3").empty().text("Moves: " + this.moves + "/" + this.maxMoves);
   $(".flooded").each(function(i) {
     $(this).removeClass("green blue yellow pink red purple");
     $(this).addClass(color);
   });
   flood(color);
-  if (this.moves === 25) {
-    alert("Game over!");
-  }
-  //find flooded squares
-  //(let's say color is blue)
-  //find adjacent of flooded squares that are blue
-    //make them flooded
-    //check their neighbors
-    //stop when none are blue
 
-    //$().append().text
-    //$(".color")
+  this.checkIfWon();
+  this.checkIfLost();
+
 };
 
-Display.prototype.checkIfWon = function () {
+Display.prototype.resetGame = function () {
+  this.moves = 0;
+  $("figure").empty();
+  this.setupBoard();
+};
 
+
+Display.prototype.checkIfWon = function () {
+  if ($("li.flooded").length == $("li").length) {
+    $(".desc").empty();
+    $(".det").empty();
+    $(".desc").text("You win!");
+    $(".instructions").removeClass("hidden");
+    $(".modal").removeClass("hidden");
+    this.resetGame();
+  }
+};
+
+Display.prototype.checkIfLost = function () {
+  if (this.moves === 25) {
+    $(".desc").empty();
+    $(".det").empty();
+    $(".desc").text("You're out of moves!");
+    $(".instructions").removeClass("hidden");
+    $(".modal").removeClass("hidden");
+    this.resetGame();
+  }
 };
 
 function doesFlood(neighbors, floodedColor) {

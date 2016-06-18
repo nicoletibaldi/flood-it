@@ -6,7 +6,7 @@ function Game (size) {
 }
 
 Game.prototype.registerStart = function () {
-  $(".start-button").on("click", function (e){
+  $(".start-button").on("click", function (){
     $(".instructions").addClass("hidden");
     $(".modal").addClass("hidden");
   });

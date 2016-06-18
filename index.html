@@ -8,17 +8,32 @@
     <script src="./js/bundle.js"></script>
   </head>
   <div class="modal">
-  <div class="instructions revealed" >
-          <div class='flood-header'>
-            <h1>FLOOD-IT!</h1>
+    <div class="instructions" >
+      <div class='flood-header'>
+          <div class="logo">
+            <img src="floodit.png">
+        </div>
+      </div>
+    <div>
+      <p class="desc">Flood the whole board with one color within the specified number of moves.<p>
+      <p class="det">Start from the top left corner. Click the colored circles below the grid. When you change
+          the current color, every adjacent square with the same color also changes.<p>
+    <div>
+                  <select>
+                    <option>Easy</option>
+                    <option>Medium</option>
+                    <option>Hard</option>
+                  </select>
+
+                  <select>
+                    <option>Colors</option>
+                    <option>Sepia</option>
+                    <option>Black/White</option>
+                  </select>
+                </div>
+            <p class="start-button"><img src="start.png"></p>
           </div>
-          <div>
-            <p class="desc">Flood the whole board with one color within the specified number of moves.<p>
-            <p>Start from the top left corner. Click the colored circles below the grid. When you change
-              the current color, every adjacent square with the same color also changes.<p>
-            <p class="start-button"> Start</p>
-          </div>
-        <ul>
+        <ul class="nicole">
           <a href="https://github.com/ntibaldi92">GitHub</a>
           <a href="https://www.linkedin.com/in/ntibaldi92">LinkedIn</a>
           <a href="https://www.nicoletibaldi.com">Portfolio</a>
@@ -27,9 +42,6 @@
   </div>
 
   <body>
-    <div class="logo">
-      <img src="floodit.png">
-    </div>
     <figure class="flood-it"></figure>
     <table class="button-table group">
       <tr>
