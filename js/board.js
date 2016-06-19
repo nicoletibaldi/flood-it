@@ -1,5 +1,3 @@
-var MoveError = require("./moveError");
-
 function Board (size) {
   this.grid = Board.makeGrid();
   this.size = size;

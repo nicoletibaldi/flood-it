@@ -48,13 +48,17 @@
 	var Game = __webpack_require__(2);
 	
 	$(function () {
-	  var size = 14;
-	  var game = new Game(size);
-	  var display = new Display(game, size);
+	  $(".start-button").on("click", function (){
+	    $(".instructions").addClass("hidden");
+	    $(".modal").addClass("hidden");
+	    var e = document.getElementById("level");
+	    var size = e.options[e.selectedIndex].value;
+	    var game = new Game(size);
+	    var display = new Display(game, size);
 	
-	  display.setupBoard();
-	  display.bindEvents();
-	  game.registerStart();
+	    display.setupBoard();
+	    display.bindEvents();
+	  });
 	});
 
 
@@ -218,28 +222,21 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	var Board = __webpack_require__(3);
-	var MoveError = __webpack_require__(4);
 	
 	function Game (size) {
 	  this.board = new Board(size);
 	}
 	
-	Game.prototype.registerStart = function () {
-	  $(".start-button").on("click", function (){
-	    $(".instructions").addClass("hidden");
-	    $(".modal").addClass("hidden");
-	  });
-	};
+	
+	
 	
 	module.exports = Game;
 
 
 /***/ },
 /* 3 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ function(module, exports) {
 
-	var MoveError = __webpack_require__(4);
-	
 	function Board (size) {
 	  this.grid = Board.makeGrid();
 	  this.size = size;
@@ -275,17 +272,6 @@
 	
 	
 	module.exports = Board;
-
-
-/***/ },
-/* 4 */
-/***/ function(module, exports) {
-
-	function MoveError (msg) {
-	  this.msg = msg;
-	}
-	
-	module.exports = MoveError;
 
 
 /***/ }
