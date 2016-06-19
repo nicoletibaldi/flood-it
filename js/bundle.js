@@ -109,8 +109,7 @@
 	  this.moves++;
 	  $("h3").empty().text("Moves: " + this.moves + "/" + this.maxMoves);
 	  $(".flooded").each(function(i) {
-	    $(this).removeClass("green blue yellow pink red purple");
-	    $(this).addClass(color);
+	    $(this).removeClass("green blue yellow pink red purple").addClass(color);
 	  });
 	  flood(color);
 	
@@ -141,6 +140,8 @@
 	  if (this.moves === 25) {
 	    $(".desc").empty();
 	    $(".det").empty();
+	    $(".start-button").empty();
+	    $(".start-button").prepend('<img src="playagain2.png" />');
 	    $(".desc").text("You're out of moves!");
 	    $(".instructions").removeClass("hidden");
 	    $(".modal").removeClass("hidden");

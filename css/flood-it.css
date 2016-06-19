@@ -21,22 +21,25 @@ body {
 
 p {
   color: white;
-  font-family: arial;
+  font-family: 'Delius', cursive;
 }
 
 .flood-header {
   color: #f54382;
   font-style: bold;
-  font-family: arial black;
   font-weight: 600;
   font-size: 32px;
   padding: 15px;
 }
 
 .desc {
-  font-weight: 300;
+  font-family: 'Delius', cursive;
   padding: 10px;
   font-size: 16px;
+}
+
+h3{
+  font-family: 'Delius', cursive;
 }
 
 .det {
@@ -47,7 +50,7 @@ p {
   cursor: pointer;
   background: #f54382;
   font-family: arial black;
-  width: 85px;
+  width: 125px;
   height: 32px;
   margin: 0 auto;
   text-align: center;
@@ -58,7 +61,7 @@ p {
 
 .nicole {
   margin: 0 auto;
-  font-family: arial;
+  font-family: 'Delius', cursive;
   color: white;
   padding: 25px;
 }
