@@ -152,13 +152,25 @@ h3{
 .square {
   float: left;
   list-style: none;
-  height: 30px;
-  width: 30px;
   -webkit-transition: all 1.5s ease;
   -moz-transition: all 1.5s ease;
   -o-transition: all 1.5s ease;
   transition: all 1.5s ease;
+}
 
+.easy-square{
+  height: 70px;
+  width: 70px;
+}
+
+.med-square{
+  height: 42px;
+  width: 42px;
+}
+
+.large-square{
+  height: 30px;
+  width: 30px;
 }
 
 .red {
@@ -179,7 +191,6 @@ h3{
 .green {
   background-color: #90a92f;
   color: #90a92f;
-
 }
 
 .blue {

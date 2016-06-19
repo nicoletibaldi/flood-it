@@ -6,10 +6,10 @@ $(function () {
     $(".instructions").addClass("hidden");
     $(".modal").addClass("hidden");
     var e = document.getElementById("level");
-    var size = e.options[e.selectedIndex].value;
+    var size = parseInt(e.options[e.selectedIndex].value);
+    $("figure").empty();
     var game = new Game(size);
     var display = new Display(game, size);
-
     display.setupBoard();
     display.bindEvents();
   });

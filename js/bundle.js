@@ -52,10 +52,10 @@
 	    $(".instructions").addClass("hidden");
 	    $(".modal").addClass("hidden");
 	    var e = document.getElementById("level");
-	    var size = e.options[e.selectedIndex].value;
+	    var size = parseInt(e.options[e.selectedIndex].value);
+	    $("figure").empty();
 	    var game = new Game(size);
 	    var display = new Display(game, size);
-	
 	    display.setupBoard();
 	    display.bindEvents();
 	  });
@@ -88,8 +88,22 @@
 	      if (i === 0) {
 	        floodedColor = randColor;
 	        $li = $("<li></li>").addClass("square " + randColor + " flooded").data("pos", [i]).text(i);
+	        if (this.size === 6) {
+	          $li.addClass("easy-square");
+	        } else if (this.size === 10) {
+	          $li.addClass("med-square");
+	        } else {
+	          $li.addClass("large-square");
+	        }
 	      } else {
 	        $li = $("<li></li>").addClass("square " + randColor).data("pos", [i]).text(i);
+	        if (this.size === 6) {
+	          $li.addClass("easy-square");
+	        } else if (this.size === 10) {
+	          $li.addClass("med-square");
+	        } else {
+	          $li.addClass("large-square");
+	        }
 	      }
 	      $ul.append($li);
 	  }
@@ -97,8 +111,7 @@
 	};
 	
 	Display.prototype.floodNeighbors = function (floodedColor) {
-	
-	  flood(floodedColor);
+	  this.flood(floodedColor);
 	};
 	
 	Display.prototype.bindEvents = function () {
@@ -115,7 +128,7 @@
 	  $(".flooded").each(function(i) {
 	    $(this).removeClass("green blue yellow pink red purple").addClass(color);
 	  });
-	  flood(color);
+	  this.flood(color);
 	
 	  this.checkIfWon();
 	  this.checkIfLost();
@@ -130,17 +143,18 @@
 	
 	
 	Display.prototype.checkIfWon = function () {
+	  var game = this;
 	  if ($("li.flooded").length == $("li").length) {
 	    $(".desc").empty();
 	    $(".det").empty();
 	    $(".desc").text("You win!");
 	    $(".instructions").removeClass("hidden");
 	    $(".modal").removeClass("hidden");
-	    this.resetGame();
 	  }
 	};
 	
 	Display.prototype.checkIfLost = function () {
+	  var game = this;
 	  if (this.moves === 25) {
 	    $(".desc").empty();
 	    $(".det").empty();
@@ -149,11 +163,10 @@
 	    $(".desc").text("You're out of moves!");
 	    $(".instructions").removeClass("hidden");
 	    $(".modal").removeClass("hidden");
-	    this.resetGame();
 	  }
 	};
 	
-	function doesFlood(neighbors, floodedColor) {
+	Display.prototype.doesFlood = function(neighbors, floodedColor) {
 	  var moved = false;
 	    neighbors.forEach(function (n){
 	      var square = $(".square").filterByData("pos", n);
@@ -162,12 +175,12 @@
 	      }
 	    });
 	  return moved;
-	}
+	};
 	
-	function flood(floodedColor) {
+	Display.prototype.flood = function(floodedColor) {
 	  var floodedPositions = $(".flooded");
-	  var neighbors = findNeighbors(floodedPositions);
-	  if (doesFlood(neighbors, floodedColor) === false) {
+	  var neighbors = this.findNeighbors(floodedPositions);
+	  if (this.doesFlood(neighbors, floodedColor) === false) {
 	    return;
 	  }
 	    neighbors.forEach(function (n){
@@ -177,36 +190,36 @@
 	      }
 	    });
 	
-	    flood(floodedColor);
-	}
+	    this.flood(floodedColor);
+	};
 	
-	
-	function findNeighbors(floodedPositions){
+	Display.prototype.findNeighbors = function(floodedPositions){
+	  var game = this;
 	  var neighbors = [];
 	  floodedPositions.each(function (idx, el){
 	
 	    var pos = parseInt($(el).text());
-	    neighbors = neighbors.concat(adjSquares(pos));
+	    neighbors = neighbors.concat(game.adjSquares(pos));
 	  });
 	  return neighbors;
-	}
+	};
 	
-	function adjSquares(pos) {
+	Display.prototype.adjSquares = function (pos) {
 	  var squares = [];
-	  if (pos > 13) {
-	    squares.push(pos - 14);
+	  if (pos > (this.size - 1)) {
+	    squares.push(pos - this.size);
 	  }
-	  if (pos < 182) {
-	    squares.push(pos + 14);
+	  if (pos < (this.size * (this.size - 1))) {
+	    squares.push(pos + this.size);
 	  }
-	  if (pos % 14 !== 0) {
+	  if (pos % this.size !== 0) {
 	    squares.push(pos - 1);
 	  }
-	  if ((pos + 1) % 14 !== 0) {
+	  if ((pos + 1) % this.size !== 0) {
 	    squares.push(pos + 1);
 	  }
 	  return squares;
-	}
+	};
 	
 	$.fn.filterByData = function(prop, val) {
 	    return this.filter(
