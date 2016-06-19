@@ -90,7 +90,7 @@
 	        $li = $("<li></li>").addClass("square " + randColor + " flooded").data("pos", [i]).text(i);
 	        if (this.size === 6) {
 	          $li.addClass("easy-square");
-	        } else if (this.size === 10) {
+	        } else if (this.size === 12) {
 	          $li.addClass("med-square");
 	        } else {
 	          $li.addClass("large-square");
@@ -99,7 +99,7 @@
 	        $li = $("<li></li>").addClass("square " + randColor).data("pos", [i]).text(i);
 	        if (this.size === 6) {
 	          $li.addClass("easy-square");
-	        } else if (this.size === 10) {
+	        } else if (this.size === 12) {
 	          $li.addClass("med-square");
 	        } else {
 	          $li.addClass("large-square");
