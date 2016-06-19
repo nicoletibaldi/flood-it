@@ -49,10 +49,13 @@
 	
 	$(function () {
 	  $(".start-button").on("click", function (){
-	    $(".instructions").addClass("hidden");
-	    $(".modal").addClass("hidden");
 	    var e = document.getElementById("level");
 	    var size = parseInt(e.options[e.selectedIndex].value);
+	    if (size === "none") {
+	      alert("Please select a level!");
+	    }
+	    $(".instructions").addClass("hidden");
+	    $(".modal").addClass("hidden");
 	    $("figure").empty();
 	    var game = new Game(size);
 	    var display = new Display(game, size);
@@ -70,7 +73,13 @@
 	  this.game = game;
 	  this.size = size;
 	  this.colors = ["red", "yellow", "pink", "green", "blue", "purple"];
-	  this.maxMoves = 25;
+	  if (this.size === 8) {
+	    this.maxMoves = 15;
+	  } else if (this.size === 12) {
+	    this.maxMoves = 20;
+	  } else {
+	    this.maxMoves = 25;
+	  }
 	  this.moves = 0;
 	};
 	
@@ -88,7 +97,7 @@
 	      if (i === 0) {
 	        floodedColor = randColor;
 	        $li = $("<li></li>").addClass("square " + randColor + " flooded").data("pos", [i]).text(i);
-	        if (this.size === 6) {
+	        if (this.size === 8) {
 	          $li.addClass("easy-square");
 	        } else if (this.size === 12) {
 	          $li.addClass("med-square");
@@ -97,7 +106,7 @@
 	        }
 	      } else {
 	        $li = $("<li></li>").addClass("square " + randColor).data("pos", [i]).text(i);
-	        if (this.size === 6) {
+	        if (this.size === 8) {
 	          $li.addClass("easy-square");
 	        } else if (this.size === 12) {
 	          $li.addClass("med-square");
@@ -155,7 +164,7 @@
 	
 	Display.prototype.checkIfLost = function () {
 	  var game = this;
-	  if (this.moves === 25) {
+	  if (this.moves === this.maxMoves) {
 	    $(".desc").empty();
 	    $(".det").empty();
 	    $(".start-button").empty();

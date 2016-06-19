@@ -3,10 +3,13 @@ var Game = require('./game');
 
 $(function () {
   $(".start-button").on("click", function (){
-    $(".instructions").addClass("hidden");
-    $(".modal").addClass("hidden");
     var e = document.getElementById("level");
     var size = parseInt(e.options[e.selectedIndex].value);
+    if (size === "none") {
+      alert("Please select a level!");
+    }
+    $(".instructions").addClass("hidden");
+    $(".modal").addClass("hidden");
     $("figure").empty();
     var game = new Game(size);
     var display = new Display(game, size);
