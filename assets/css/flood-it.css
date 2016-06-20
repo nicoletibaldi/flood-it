@@ -24,6 +24,34 @@ p {
   font-family: 'Delius', cursive;
 }
 
+h3{
+  font-family: 'Delius', cursive;
+  float: left;
+}
+
+.game-nav{
+  padding-top: 35px;
+  width: 420px;
+  margin: 0 auto;
+  height: 46px;
+  overflow: hidden;
+  vertical-align: center;
+}
+
+.nav-buttons{
+  float: right;
+}
+
+.refresh, .menu {
+  float: left;
+  height: 25px;
+  padding-top: 8px;
+}
+
+.refresh{
+  padding-right: 3px;
+}
+
 .flood-header {
   color: #f54382;
   font-style: bold;
@@ -36,10 +64,6 @@ p {
   font-family: 'Delius', cursive;
   padding: 10px;
   font-size: 16px;
-}
-
-h3{
-  font-family: 'Delius', cursive;
 }
 
 .det {
@@ -169,6 +193,9 @@ h3{
 
 .flood-it {
   position: relative;
+  margin: 0;
+  padding: 0;
+  padding-top: 2px;
 }
 
 .grid {
