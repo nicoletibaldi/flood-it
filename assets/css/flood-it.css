@@ -46,6 +46,7 @@ h3{
   float: left;
   height: 25px;
   padding-top: 8px;
+  cursor: pointer;
 }
 
 .refresh{
