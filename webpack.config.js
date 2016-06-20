@@ -1,8 +1,8 @@
 module.exports = {
   context: __dirname,
-  entry: "./js/main.js",
+  entry: "./lib/js/main.js",
   output: {
-    path: "./js",
+    path: "./lib/js",
     publicPath: "/js/",
     filename: "bundle.js",
     devtoolModuleFilenameTemplate: '[resourcePath]',

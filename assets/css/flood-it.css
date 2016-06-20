@@ -103,6 +103,10 @@ h3{
     z-index: 100;
     border: 1px solid #2c2c2c;
     vertical-align: center;
+    -webkit-transition: all 1.5s ease;
+    -moz-transition: all 1.5s ease;
+    -o-transition: all 1.5s ease;
+    transition: all 1.5s ease;
 }
 
 .modal {
