@@ -24,9 +24,10 @@ p {
   font-family: 'Delius', cursive;
 }
 
-h3{
+.moves{
   font-family: 'Delius', cursive;
   float: left;
+  padding-right: 262px;
 }
 
 .game-nav{
