@@ -5,10 +5,10 @@ http://www.nicole-tibaldi.me/flood-it
 
 ##Screenshots
 ![image of welcome screen]
-(https://github.com/ntibaldi92/flood-it/blob/master/assets/welcomess.jpg)
+(https://github.com/ntibaldi92/flood-it/blob/master/docs/welcomess.jpg)
 
 ![image of game screen]
-(https://github.com/ntibaldi92/flood-it/blob/master/assets/gamess.jpg)
+(https://github.com/ntibaldi92/flood-it/blob/master/docs/gamess.jpg)
 
 ##Instructions
 Flood the whole board with one color within the specified number of moves.
