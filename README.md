@@ -1,6 +1,6 @@
 #Flood-It!
 
-[Live] http://www.nicole-tibaldi.me/flood-it
+[Live] (http://www.nicole-tibaldi.me/flood-it)
 
 ##Screenshots
 ![image of welcome screen]
