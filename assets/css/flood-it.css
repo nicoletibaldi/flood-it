@@ -68,6 +68,13 @@ h3{
   bottom: 5px;
 }
 
+.game{
+  color: black;
+  padding-top: 0;
+  padding-right: 4.5%;
+  padding-bottom: 2%;
+}
+
 .level{
   padding: 3px;
   margin: 5px;
