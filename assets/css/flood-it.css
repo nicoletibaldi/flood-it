@@ -10,10 +10,6 @@ html, body, section, article, h1, h2, p, strong, em, a, button {
   color: inherit;
   background: transparent;
 }
-
-html {
-}
-
 body {
     margin: auto;
     text-align: center;
@@ -182,10 +178,7 @@ p {
   width: 30px;
   float: left;
   border: 1px solid white;
-  /*border-style: outset;*/
   border-radius: 50%;
-  /*background: radial-gradient(circle at 50% 0px, #ffffff, rgba(255, 255, 255, 0) 58%);*/
-
 }
 
 .button:hover {
@@ -265,8 +258,4 @@ p {
   content: "";
   display: block;
   clear: both;
-}
-
-.flooded {
-  /*background: white;*/
 }
